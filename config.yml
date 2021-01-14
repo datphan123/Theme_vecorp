@@ -1,0 +1,7 @@
+development:
+  password: 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
+  theme_id: "118148858051"
+  store: phandat.myshopify.com
+  ignore_file:
+  - config/setting_data.json  
+
