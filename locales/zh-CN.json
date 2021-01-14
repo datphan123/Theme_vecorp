@@ -111,7 +111,7 @@
       "address_no_results": "未找到该地址的结果",
       "address_query_limit_html": "您已超过 Google API 使用限制。考虑升级到<a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">高级套餐<\/a>。",
       "auth_error_html": "对您的 Maps 账户进行身份验证时出现问题。",
-      "section_heading": "地点"
+      "section_heading": "位置"
     },
     "video": {
       "play": "播放 {{ video_title }} 视频",
