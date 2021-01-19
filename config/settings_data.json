@@ -101,6 +101,78 @@
         ],
         "settings": {}
       },
+      "lookbook-gallery": {
+        "type": "lookbook-gallery",
+        "blocks": {
+          "lookbook-gallery-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": "#"
+            }
+          },
+          "lookbook-gallery-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "lookbook-gallery-2": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "lookbook-gallery-0",
+          "lookbook-gallery-1",
+          "lookbook-gallery-2"
+        ],
+        "settings": {}
+      },
+      "lookbook-gallery-slide": {
+        "type": "lookbook-gallery-slide",
+        "blocks": {
+          "lookbook-gallery-slide-0": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": "#"
+            }
+          },
+          "lookbook-gallery-slide-1": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "lookbook-gallery-slide-2": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "lookbook-gallery-slide-3": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "lookbook-gallery-slide-0",
+          "lookbook-gallery-slide-1",
+          "lookbook-gallery-slide-2",
+          "lookbook-gallery-slide-3"
+        ],
+        "settings": {}
+      },
       "footer": {
         "type": "footer",
         "blocks": {
@@ -212,6 +284,29 @@
             "title": ""
           }
         },
+        "lookbook-gallery": {
+          "type": "lookbook-gallery",
+          "blocks": {
+            "lookbook-gallery-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "lookbook-gallery-1": {
+              "type": "image",
+              "settings": {}
+            },
+            "lookbook-gallery-2": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "lookbook-gallery-0",
+            "lookbook-gallery-1",
+            "lookbook-gallery-2"
+          ],
+          "settings": {}
+        },
         "image-bar": {
           "type": "image-bar",
           "blocks": {
@@ -263,7 +358,8 @@
         "collection",
         "hero-2",
         "quotes",
-        "image-bar"
+        "image-bar",
+        "lookbook-gallery"
       ]
     },
     "Light": {

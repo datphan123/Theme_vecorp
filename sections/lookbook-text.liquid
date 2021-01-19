@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="lookbook-text">
+  {{section.settings.text1}}
+  <blockquote>
+    {{section.settings.text_blockquote}}
+  </blockquote>
+  {{section.settings.text2}}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Text content",
+  "class": "lookbook-text-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "Text above",
+      "default": "<p>Typography is the work of <strong>typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists,</strong> and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text_blockquote",
+      "label": "Blockquote",
+      "default": "<p>Sed utgio perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text2",
+      "label": "Text below",
+      "default": "<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+  .lookbook-text-section {
+    margin-top: 60px;
+  }
+
+  .lookbook-text > *,
+  .lookbook-text {
+    color: #878787;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  .lookbook-text > *:not(:last-child) {
+    margin-bottom: 18.2px;
+  }
+
+  .lookbook-text > blockquote {
+    quotes: none;
+    background-color: #f1f1f1;
+    padding: 20px 25px 30px 60px;
+    margin-bottom: 20px;
+    position: relative;
+    font-style: italic;
+    display: block;
+    text-align: left;
+  }
+
+  .lookbook-text > blockquote::after {
+    content: "“";
+    position: absolute;
+    top: 0;
+    left: 25px;
+    color: #999;
+    font-size: 50px;
+  }
+
+</style>
