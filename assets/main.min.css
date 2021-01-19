@@ -1,5 +1,265 @@
+@charset "UTF-8";
 .demo {
   color: #fff;
+}
+
+.lookbook-hero {
+  background-color: #0000;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+  padding: 50px 0;
+  position: relative;
+}
+@media (max-width: 575px) {
+  .lookbook-hero {
+    padding: 40px 0;
+  }
+}
+.lookbook-hero.lookbook-hero-h-large {
+  padding: 100px 0;
+}
+@media (max-width: 575px) {
+  .lookbook-hero.lookbook-hero-h-large {
+    padding: 80px 0;
+  }
+}
+.lookbook-hero.overplay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.lookbook-hero .default-image-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.lookbook-hero .lookbook-hero-heading {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
+}
+.lookbook-hero .lookbook-hero-heading.lookbook-hero-heading-fz-large {
+  font-size: 40px;
+}
+@media (max-width: 575px) {
+  .lookbook-hero .lookbook-hero-heading.lookbook-hero-heading-fz-large {
+    font-size: 36px;
+  }
+}
+
+.lookbook-text-section {
+  margin-top: 60px;
+}
+.lookbook-text-section .lookbook-text, .lookbook-text-section .lookbook-text > * {
+  color: #878787;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+.lookbook-text-section .lookbook-text > *:not(:last-child), .lookbook-text-section .lookbook-text > * > *:not(:last-child) {
+  margin-bottom: 18.2px;
+}
+.lookbook-text-section .lookbook-text > blockquote, .lookbook-text-section .lookbook-text > * > blockquote {
+  quotes: none;
+  background-color: #f1f1f1;
+  padding: 20px 25px 30px 60px;
+  margin-bottom: 20px;
+  position: relative;
+  font-style: italic;
+  display: block;
+  text-align: left;
+}
+.lookbook-text-section .lookbook-text > blockquote::after, .lookbook-text-section .lookbook-text > * > blockquote::after {
+  content: "“";
+  position: absolute;
+  top: 0;
+  left: 25px;
+  color: #999;
+  font-size: 50px;
+}
+
+.lookbook-gallery-section {
+  margin-top: 50px;
+}
+@media (min-width: 992px) {
+  .lookbook-gallery-section .padding-0 {
+    padding: 0;
+  }
+}
+.lookbook-gallery-section .lookbook-gallery-heading {
+  color: #222;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.428;
+  margin-bottom: 40px;
+}
+.lookbook-gallery-section .lookbook-gallery-image-items {
+  margin-bottom: 50px;
+}
+.lookbook-gallery-section .lookbook-gallery-image-items .lookbook-gallery-image {
+  display: flex;
+  align-items: flex-start;
+}
+.lookbook-gallery-section .lookbook-gallery-image-items > img {
+  width: 100%;
+  max-width: 100%;
+}
+.lookbook-gallery-section .lookbook-gallery-desc, .lookbook-gallery-section .lookbook-gallery-desc > * {
+  color: #878787;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.lookbook-gallery-slider-section {
+  margin: 50px 0;
+}
+@media (min-width: 992px) {
+  .lookbook-gallery-slider-section .padding-0 {
+    padding: 0;
+  }
+}
+.lookbook-gallery-slider-section .lookbook-gallery-heading {
+  color: #222;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.428;
+  margin-bottom: 40px;
+}
+.lookbook-gallery-slider-section .cslide-wrapper {
+  position: relative;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav {
+  opacity: 0;
+}
+@media (max-width: 991px) {
+  .lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav {
+    opacity: 1;
+  }
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"] {
+  position: absolute;
+  top: calc(50% - 20px);
+  transition: .2s ease-in-out;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #222;
+  border: 2px solid currentColor;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"][aria-disabled="true"] {
+  opacity: .6;
+  user-select: none;
+  pointer-events: none;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"]:hover {
+  color: var(--color-btn-primary);
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"] > svg {
+  color: inherit;
+  fill: currentColor;
+}
+@media (max-width: 575px) {
+  .lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"] {
+    width: 30px;
+    height: 30px;
+  }
+  .lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"] > svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"].lookbook-gallery-nav-previous {
+  left: 30px;
+}
+@media (max-width: 575px) {
+  .lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"].lookbook-gallery-nav-previous {
+    left: 10px;
+  }
+}
+.lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"].lookbook-gallery-nav-next {
+  right: 30px;
+}
+@media (max-width: 575px) {
+  .lookbook-gallery-slider-section .cslide-wrapper .lookbook-gallery-wrap-nav [class*="lookbook-gallery-nav"].lookbook-gallery-nav-next {
+    right: 10px;
+  }
+}
+.lookbook-gallery-slider-section .cslide-wrapper:hover .lookbook-gallery-wrap-nav {
+  opacity: 1;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper {
+  overflow: hidden;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper.slick-initialized .cslide-slider {
+  touch-action: pan-y;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider {
+  display: flex;
+  max-width: 100%;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider .cslide-slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+@media (min-width: 750px) {
+  .lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider .cslide-slide {
+    width: 25%;
+  }
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider .cslide-slide.cslide-slide--single {
+  width: 100%;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider .cslide-slide .lookbook-gallery-image {
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider .cslide-slide .lookbook-gallery-image > img {
+  width: 100%;
+  max-width: 100%;
+  transition: 1.25s cubic-bezier(0.26, 0.54, 0.32, 1);
+  -webkit-transition: 1.25s cubic-bezier(0.26, 0.54, 0.32, 1);
+  -moz-transition: 1.25s cubic-bezier(0.26, 0.54, 0.32, 1);
+  -ms-transition: 1.25s cubic-bezier(0.26, 0.54, 0.32, 1);
+  -o-transition: 1.25s cubic-bezier(0.26, 0.54, 0.32, 1);
+}
+.lookbook-gallery-slider-section .cslide-wrapper .cslide-slider-wrapper .cslide-slider .cslide-slide .lookbook-gallery-image:hover > img {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+.h1, h1,
+.h2, h2,
+.h3, h3,
+.h4, h4,
+.h5, h5,
+.h6, h6 {
+  text-transform: none;
+}
+
+.flex-jcc {
+  justify-content: center;
 }
 
 .container,
@@ -17,31 +277,31 @@
 
 @media (min-width: 576px) {
   .container,
-.container-sm {
+  .container-sm {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
   .container,
-.container-md,
-.container-sm {
+  .container-md,
+  .container-sm {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
   .container,
-.container-lg,
-.container-md,
-.container-sm {
+  .container-lg,
+  .container-md,
+  .container-sm {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
   .container,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl {
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
     max-width: 1140px;
   }
 }

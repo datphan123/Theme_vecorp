@@ -1,9 +1,9 @@
 <div class="container padding-0">
   <h2 class="lookbook-gallery-heading text-center">{{section.settings.heading}}</h2>
   <div class="lookbook-gallery-image-items">
-    <div class="row no-gutters flex-justify-content-center">
+    <div class="row no-gutters flex-jcc">
       {% for block in section.blocks %}
-        <div class="col-md-4">
+        <div class="col-12 col-md-4">
           {% if block.settings.link != blank %}
             <a class="lookbook-gallery-image" href="{{ block.settings.link }}">
           {% else %}
@@ -70,62 +70,3 @@
   ]
 }
 {% endschema %}
-
-<style>
-  .lookbook-gallery-section {
-    margin-top: 50px;
-  }
-
-  .padding-0 {
-    padding: 0;
-  }
-
-  .lookbook-gallery-heading {
-    color: #222;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.428;
-    margin-bottom: 40px;
-  }
-
-  .flex-justify-content-center {
-    justify-content: center;
-  }
-
-  .lookbook-gallery-image-items {
-    margin-bottom: 50px;
-  }
-
-  .lookbook-gallery-image {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .lookbook-gallery-image > img {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .lookbook-gallery-desc > *,
-  .lookbook-gallery-desc {
-    color: #878787;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.75;
-  }
-
-  @media screen and (max-width: 991px) {
-    .padding-0 {
-      padding: 0 15px;
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    .col-md-4 {
-      -ms-flex: 0 0 100%;
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
-  }
-
-</style>

@@ -1,262 +1,92 @@
 <div id="{{section.id}}" data-section-id="{{ section.id }}" data-section-type="custom-slide" data-section-cpr="4">
   <div class="container padding-0">
     {% if section.settings.title != blank %}
-    <h2 class="lookbook-gallery-heading text-center">{{ section.settings.title }}</h2>
+      <h2 class="lookbook-gallery-heading text-center">{{ section.settings.title }}</h2>
     {% endif %}
 
     {% if section.blocks.size > 0 %}
-    <div class="cslide-wrapper" data-slider>
-      <div class="cslide-slider-wrapper" data-slider-container>
-        <div class="cslide-slider" id="CSlide-{{ section.id }}" data-count="{{ section.blocks.size }}"
-          data-slider-track>
-          {% for block in section.blocks %}
-          <div id="slickSlide{{ block.id }}"
-            class="cslide-slide cslide-slide--{{ block.id }}{% if section.blocks.size == 1 %} cslide-slide--single{% endif %}"
-            aria-labelledby="slickDot{{ block.id }}" {{ block.shopify_attributes }}
-            data-slider-slide-index="{{ forloop.index0 }}" data-slider-item>
-
-            <div class="lookbook-gallery-item">
-              {% if block.settings.link != blank %}
-              <a class="lookbook-gallery-image" href="{{ block.settings.link }}">
-                {% else %}
-                <div class="lookbook-gallery-image">
-                  {% endif %}
-
-                  {% if block.settings.image == blank %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      <div class="cslide-wrapper" data-slider>
+        <div class="cslide-slider-wrapper" data-slider-container>
+          <div class="cslide-slider" id="CSlide-{{ section.id }}" data-count="{{ section.blocks.size }}" data-slider-track>
+            {% for block in section.blocks %}
+              <div id="slickSlide{{ block.id }}" class="cslide-slide cslide-slide--{{ block.id }}{% if section.blocks.size == 1 %} cslide-slide--single{% endif %}" aria-labelledby="slickDot{{ block.id }}" {{ block.shopify_attributes }} data-slider-slide-index="{{ forloop.index0 }}" data-slider-item>
+                <div class="lookbook-gallery-item">
+                  {% if block.settings.link != blank %}
+                    <a class="lookbook-gallery-image" href="{{ block.settings.link }}">
                   {% else %}
-                  <img src="{{ block.settings.image | img_url: '576x' }}" alt="{{block.settings.image.alt | escape}}">
+                    <div class="lookbook-gallery-image">
                   {% endif %}
+
+                    {% if block.settings.image == blank %}
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% else %}
+                      <img src="{{ block.settings.image | img_url: '576x' }}" alt="{{block.settings.image.alt | escape}}">
+                    {% endif %}
 
                   {% if block.settings.link != blank %}
-              </a>
-              {% else %}
-            </div>
-            {% endif %}
+                    </a>
+                  {% else %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
           </div>
-
         </div>
-        {% endfor %}
+
+        {% if section.blocks.size > 1 and section.settings.slick_arrow %}
+          <div class="lookbook-gallery-wrap-nav">
+            <button class="lookbook-gallery-nav-previous" data-slider-button>{% include 'icon-chevron-left' %}</button>
+            <button class="lookbook-gallery-nav-next" data-slider-button data-slider-button-next>{% include'icon-chevron-right' %}</button>
+          </div>
+        {% endif %}
       </div>
-    </div>
 
-    {% comment %}
-    {% if section.blocks.size > 1 and section.settings.slick_dot %}
-    <ul class="slick-dots{% if section.blocks.size < 4 %} slick-dots--mobile-only{% endif %}" data-slider-indicators>
-      {%- for block in section.blocks -%}
-      <li{% if forloop.first %} class="slick-active" {% endif %} data-slider-indicator>
-        <button id="slickDot{{ block.id }}"
-          aria-label="{{ 'sections.slideshow.load_slide' | t: slide_number: forloop.index }}"
-          data-slide-number="{{ forloop.index0 }}" aria-controls="slickSlide{{ block.id }}"></button>
-        </li>
-        {%- endfor -%}
-    </ul>
     {% endif %}
-    {% endcomment %}
-    {% if section.blocks.size > 1 and section.settings.slick_arrow %}
-    <div class="lookbook-gallery-wrap-nav">
-      <button class="lookbook-gallery-nav-previous" data-slider-button>{% include 'icon-chevron-left' %}</button>
-      <button class="lookbook-gallery-nav-next" data-slider-button data-slider-button-next>{% include
-        'icon-chevron-right' %}</button>
-    </div>
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
     {% endif %}
-
   </div>
-  <div></div>
-  {% endif %}
-
-  {% if section.blocks.size == 0 %}
-  {% include 'no-blocks' %}
-  {% endif %}
 </div>
-
-</div>
-
-
-<style>
-  .lookbook-gallery-slider-section {
-    margin: 50px 0;
-  }
-
-  #{{section.id}} .padding-0 {
-    padding: 0;
-  }
-
-  #{{section.id}} [class*="lookbook-gallery-nav"] {
-    position: absolute;
-    top: calc(50% - 20px);
-    transition: .2s ease-in-out;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #222;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
-  }
-
-  #{{section.id}} .lookbook-gallery-nav-previous {
-    left: 30px;
-  }
-
-  #{{section.id}} .lookbook-gallery-nav-next {
-    right: 30px;
-  }
-
-  #{{section.id}} [class*="lookbook-gallery-nav"] > svg {
-    fill: currentColor;
-    width: 20px;
-    height: 20px;
-  }
-
-  .cslide-wrapper {
-    position: relative;
-  }
-
-  @media screen and (max-width: 991px) {
-    .padding-0 {
-      padding: 0 15px;
-    }
-  }
-
-  .lookbook-gallery-heading {
-    color: #222;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.428;
-    margin-bottom: 40px;
-  }
-
-  .lookbook-gallery-image {
-    display: flex;
-    align-items: flex-start;
-    overflow: hidden;
-  }
-
-  .lookbook-gallery-image>img {
-    width: 100%;
-    max-width: 100%;
-    transition: 1.25s cubic-bezier(.26,.54,.32,1);
-  }
-  .lookbook-gallery-image:hover>img {
-    transform: scale(1.2);
-  }
-
-  /* slider */
-  .cslide-slider-wrapper {
-    overflow: hidden;
-  }
-
-  .cslide-slider-wrapper.slick-initialized .cslide-slider {
-    touch-action: pan-y;
-  }
-
-  .cslide-slider {
-    display: flex;
-    max-width: 100%;
-  }
-
-  .cslide-slide {
-    width: 100%;
-    flex-shrink: 0;
-  }
-
-  @media only screen and (min-width: 750px) {
-    .cslide-slide {
-      width: 25%;
-    }
-  }
-
-  .cslide-slide--single {
-    width: 100%;
-  }
-
-  .slick-dotted.cslide-slider.slick-initialized {
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-  }
-
-  .cslide-wrapper .slick-dots {
-    position: relative;
-    bottom: 0;
-    margin-top: 55px;
-  }
-
-  .cslide-wrapper .slick-dots li {
-    margin: 0;
-  }
-
-  @media only screen and (min-width: 750px) {
-    .cslide-wrapper .slick-dots li:nth-last-child(-n+2) {
-      display: none;
-    }
-  }
-
-  .cslide-wrapper .slick-dots li button::before {
-    font-size: 34px;
-    color: var(--color-text);
-    opacity: 0.2;
-  }
-
-  .cslide-wrapper .slick-dots li.slick-active button::before {
-    opacity: 1;
-  }
-
-  @media only screen and (min-width: 750px) {
-    .cslide-wrapper .slick-dots--mobile-only {
-      display: none;
-    }
-  }
-
-  .cslide-wrapper .slick-slide[tabindex="0"] {
-    outline: none;
-  }
-
-  .lookbook-gallery-slider-section .slick-dots li button {
-    outline: none;
-  }
-</style>
 
 {% schema %}
 {
-"name": "Gallery slider",
-"class": "lookbook-gallery-slider-section",
-"max_blocks": 16,
-"settings": [
-{
-"type": "text",
-"id": "title",
-"label": "Heading",
-"default": "shop the look"
-},
-{
-"type": "checkbox",
-"id": "slick_arrow",
-"label": "Show arrows",
-"default": true
-}
-],
-"blocks": [
-{
-"type": "image",
-"name": "Image",
-"settings": [
-{
-"type": "image_picker",
-"id": "image",
-"label": "Image",
-"info": "Recommend size: 300x300px"
-},
-{
-"type": "url",
-"id": "link",
-"label": "Link",
-"info": "Optional"
-}
-]
-}
-]
+  "name":"Gallery slider",
+  "class":"lookbook-gallery-slider-section",
+  "max_blocks":16,
+  "settings":[
+     {
+        "type":"text",
+        "id":"title",
+        "label":"Heading",
+        "default":"shop the look"
+     },
+     {
+        "type":"checkbox",
+        "id":"slick_arrow",
+        "label":"Show arrows",
+        "default":true
+     }
+  ],
+  "blocks":[
+     {
+        "type":"image",
+        "name":"Image",
+        "settings":[
+           {
+              "type":"image_picker",
+              "id":"image",
+              "label":"Image",
+              "info":"Recommend size: 300x300px"
+           },
+           {
+              "type":"url",
+              "id":"link",
+              "label":"Link",
+              "info":"Optional"
+           }
+        ]
+     }
+  ]
 }
 {% endschema %}

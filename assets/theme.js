@@ -9395,6 +9395,7 @@ theme.CSlide = (function() {
     });
 
     this.desktopOptions = Object.assign({}, defaults, {
+      canUseTouchEvents: true,
       slidesToShow: Math.min(
         defaults.slidesToShow,
         this.slider.getAttribute('data-count')

@@ -1,0 +1,56 @@
+.lookbook-hero {
+  background-color: #0000;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+  padding: 50px 0;
+  position: relative;
+
+  @media (max-width: 575px) {
+    padding: 40px 0;
+  }
+
+  &.lookbook-hero-h-large {
+    padding: 100px 0;
+    @media (max-width: 575px) {
+      padding: 80px 0;
+    }
+  }
+
+  &.overplay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .default-image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .lookbook-hero-heading {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 2;
+
+    &.lookbook-hero-heading-fz-large {
+      font-size: 40px;
+      @media (max-width: 575px) {
+        font-size: 36px;
+      }
+    }
+  }
+}

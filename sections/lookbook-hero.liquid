@@ -1,13 +1,35 @@
+<style>
+  {% if section.settings.overlay %}
+    .lookbook-hero.overplay::after {
+      {% if section.settings.color_overlay != blank %}
+        background-color: {{section.settings.color_overlay}};
+      {% else %}
+        background-color: #000;
+      {% endif %}
+
+      {% if section.settings.overlay_opacity != blank %}
+        opacity: calc({{section.settings.overlay_opacity }} / 100);
+      {% else %}
+        opacity: .4;
+      {% endif %}
+    }
+  {% endif %}
+</style>
+
 <div class="lookbook-hero 
-  {% if section.settings.heading != blank %} overplay {% endif %}
+  {% if section.settings.overlay %} overplay {% endif %}
   {% if section.settings.hero_layout == 'fixed_width' %} container {% endif %} 
-  {% if section.settings.hero_size == 'large' %} lookbook-hero-h-large {% endif %}" style="
-    background-image: 
-      {%- if section.settings.image != blank -%} url({{ section.settings.image | img_url: '2048x' }}); 
-      {%- else -%} url('{{ 'shop-lookbook-hero.jpg' | asset_url }}'); 
-      {%- endif -%}
-    background-position: center {{section.settings.alignment}};
-">
+  {% if section.settings.hero_size == 'large' %} lookbook-hero-h-large {% endif %}" 
+  {%- if section.settings.image != blank -%}
+      style="
+         background-image: url({{ section.settings.image | img_url: '2048x' }}); 
+         background-position: center {{section.settings.alignment}};"
+   {%- endif -%}
+   >
+   {%- if section.settings.image == blank -%}
+      <div class="default-image-background pos-abs-100">{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+   {%- endif -%}
+
   <div class="container">
     <h1 class="lookbook-hero-heading
       {% if section.settings.text_size == 'large' %} lookbook-hero-heading-fz-large {% endif %}
@@ -100,6 +122,27 @@
          "id":"heading",
          "label":"Heading",
          "default":"Lookbook in page"
+      },
+      {
+         "type": "checkbox",
+         "id": "overlay",
+         "label": "Show overlay",
+         "default": true
+      },
+      {
+         "type": "color",
+         "id": "color_overlay",
+         "label": "Color overlay",
+         "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Overlay opacity",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 54
       }
    ],
    "presets":[
@@ -114,62 +157,3 @@
    ]
 }
 {% endschema %}
-
-<style>
-  .lookbook-hero {
-    background-color: #0000;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll;
-    background-position: center center;
-    padding: 50px 0;
-  }
-
-  .lookbook-hero-h-large {
-    padding: 100px 0;
-  }
-
-  .lookbook-hero.overplay {
-    position: relative;
-  }
-
-  .lookbook-hero.overplay::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #0000008a;
-  }
-
-  .lookbook-hero-heading {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 5px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .lookbook-hero-heading-fz-large {
-    font-size: 40px;
-  }
-
-  @media screen and (max-width: 575px) {
-    .lookbook-hero {
-      padding: 40px 0;
-    }
-
-    .lookbook-hero-h-large {
-      padding: 80px 0;
-    }
-
-    .lookbook-hero-heading-fz-large {
-      font-size: 36px;
-    }
-  }
-
-</style>
