@@ -105,17 +105,33 @@
         "type": "footer",
         "blocks": {
           "footer-0": {
-            "type": "link_list",
+            "type": "text",
             "settings": {}
           },
           "footer-1": {
+            "type": "link_list",
+            "settings": {}
+          },
+          "footer-2": {
+            "type": "link_list",
+            "settings": {}
+          },
+          "footer-3": {
+            "type": "link_list",
+            "settings": {}
+          },
+          "footer-4": {
             "type": "newsletter",
             "settings": {}
           }
         },
         "block_order": [
           "footer-0",
-          "footer-1"
+          "footer-1",
+          "footer-2",
+          "footer-3",
+          "footer-4"
+
         ],
         "settings": {
           "show_payment_icons": true
@@ -239,17 +255,32 @@
           "type": "footer",
           "blocks": {
             "footer-0": {
-              "type": "link_list",
+              "type": "text",
               "settings": {}
             },
             "footer-1": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "footer-2": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "footer-3": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "footer-4": {
               "type": "newsletter",
               "settings": {}
             }
           },
           "block_order": [
             "footer-0",
-            "footer-1"
+            "footer-1",
+            "footer-2",
+            "footer-3",
+            "footer-4"
           ],
           "settings": {
             "show_payment_icons": true

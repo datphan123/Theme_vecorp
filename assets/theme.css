@@ -1080,7 +1080,8 @@ textarea {
   opacity: 1; }
 
 .main-content .shopify-section {
-  display: inherit; }
+  display: inherit;
+}
 
 .critical-hidden {
   display: inherit; }
@@ -3692,7 +3693,7 @@ hr {
       border-bottom: 1px solid var(--color-border); } }
   @media only screen and (min-width: 750px) {
     .site-header {
-      padding: 0 55px; }
+      padding: 0 25px; }
       .site-header.logo--center {
         padding-top: 30px; } }
 
@@ -5684,8 +5685,7 @@ hr {
 
 @media only screen and (min-width: 750px) {
   .site-footer__social-icons {
-    padding-top: 7.5px;
-    text-align: right; } }
+    padding-top: 7.5px; } }
 
 .social-icons__item {
   padding: 0 15px; }
@@ -6996,3 +6996,5 @@ hr {
 
 .store-availability-list__phone {
   margin-bottom: 0; }
+/* custom col bootstrap */
+
