@@ -1,0 +1,142 @@
+<style>
+    .tt_txt {
+        background: #383838;
+        color: #fff;
+        padding: 8px 10px;
+        font-size: 12px;
+        line-height: 12px;
+        white-space: nowrap;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: -60%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip_top {
+        position: relative;
+        display: inline-block;
+        transition: 1s;
+        border-radius: 50%;
+    }
+    .tooltip_top .tt_txt::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #383838 transparent transparent transparent;
+    }
+    .tooltip_top:hover .tt_txt {
+        visibility: visible;
+        opacity: 1;
+    }
+    .container-social{
+        margin-top: 50px;
+    }
+    .nt-social{
+        text-align: center;
+    }
+    
+    .social-customicon .icon{
+        width: 32px;
+        height: 32px;
+    }
+    .social-icons__item:hover .tooltip_top{
+        transform:translate(0px,-10px);
+        color: black;
+    }
+    .social-icons__item{
+        cursor: pointer;
+    }
+    .social-icons__item:hover .{
+        bottom: 5px;
+    }
+</style>
+
+{%- if
+    section.settings.social_twitter != blank
+    or section.settings.social_facebook != blank
+    or section.settings.social_pinterest != blank
+    or section.settings.social_instagram != blank
+    or section.settings.social_tumblr != blank
+    or section.settings.social_youtube != blank
+  -%}
+    {%- assign section_social_icons = true -%}
+{%- endif -%}
+{%- assign socials = "Facebook Twitter Pinterest Instagram Tumblr Snapchat YouTube Vimeo" | split: ' ' -%}
+<div class="container container-social">
+    <div class="nt-social">
+        {%- if section_social_icons -%}
+            <ul class="list--inline">
+                {%- for social in socials -%}
+                    
+                    {%- assign social_link = social | prepend: 'social_' | downcase -%}
+                
+                    {%- assign icon_link = social | prepend: 'icon-' | append: '-circle' | downcase -%}
+                        
+                    {%- if section.settings[social_link] != blank -%}
+                        
+                        <li class="social-icons__item">
+                        <a class="social-icons__link tooltip_top" href="{{ section.settings[social_link] | escape }}" aria-describedby="a11y-external-message">
+                            <span class="social-customicon">
+                                {%- include icon_link -%}
+                            </span>
+                            
+                            <span class="tt_txt">{{social}}</span>
+                        </a>
+                        </li>
+                    {%- endif -%}
+                {%- endfor -%}
+            </ul>
+        {%- endif -%}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "cocial-share",
+        "class": "section-cocial-share",
+        "settings": [
+        {
+            "type": "text",
+            "id": "social_twitter",
+            "label": "Twitter",
+            "info": "https:\/\/twitter.com\/shopify"
+          },
+          {
+            "type": "text",
+            "id": "social_facebook",
+            "label": "Facebook",
+            "info": "https:\/\/facebook.com\/shopify"
+          },
+          {
+            "type": "text",
+            "id": "social_pinterest",
+            "label": "Pinterest",
+            "info": "https:\/\/pinterest.com\/shopify"
+          },
+          {
+            "type": "text",
+            "id": "social_instagram",
+            "label": "Instagram",
+            "info": "http:\/\/instagram.com\/shopify"
+          },
+          {
+            "type": "text",
+            "id": "social_tumblr",
+            "label": "Tumblr",
+            "info": "http:\/\/shopify.tumblr.com"
+          },
+          {
+            "type": "text",
+            "id": "social_youtube",
+            "label": "YouTube",
+            "info": "https:\/\/www.youtube.com\/shopify"
+          }
+        ]
+    }
+{% endschema %}

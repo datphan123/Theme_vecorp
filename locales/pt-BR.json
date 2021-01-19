@@ -398,7 +398,7 @@
     "issued": {
       "title_html": "Aqui está o seu cartão-presente de {{ value }} para {{ shop }}!",
       "subtext": "Seu cartão-presente",
-      "gift_card_code": "Código do cartão-presente",
+      "gift_card_code": "código do cartão de presente",
       "disabled": "Desabilitado",
       "expired": "Expirado em {{ expiry }}",
       "active": "Expira em {{ expiry }}",

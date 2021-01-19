@@ -18,6 +18,7 @@
   {%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
 
   <link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{ 'theme.min.css' | asset_url }}" as="style">
   <link rel="preload" href="{{ 'main.min.css' | asset_url }}" as="style">
 
 
@@ -76,7 +77,6 @@
       link.dispatchEvent(new Event('load'));
     }
   </script>
-
   <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" type="text/css" media="print" onload="this.media='all';onLoadStylesheet()">
   <link rel="stylesheet" href="{{ 'main.min.css' | asset_url }}" type="text/css" media="print" onload="this.media='all';onLoadStylesheet()">
 
@@ -169,7 +169,7 @@
   {{ content_for_header }}
 </head>
 
-<body class="demo template-{{ request.page_type | handle }}">
+<body class="template-{{ request.page_type | handle }}">
 
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
