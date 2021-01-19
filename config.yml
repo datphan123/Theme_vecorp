@@ -4,4 +4,3 @@ development:
   store: phandat.myshopify.com
   ignore_file:
   - config/setting_data.json  
-

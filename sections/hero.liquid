@@ -60,7 +60,16 @@
         </span>
       {%- endif -%}
       <noscript>
-        <div class="hero-fixed-width__image"{% if section.settings.image %}{% unless section.settings.image.alt == blank %} role="img" aria-label="{{ section.settings.image.alt | escape }}"{% endunless %} style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); background-position: center {{ section.settings.alignment }};"{% endif %}></div>
+        <div 
+          class="hero-fixed-width__image"
+          {% if section.settings.image %}
+            {% unless section.settings.image.alt == blank %} 
+              role="img" aria-label="{{ section.settings.image.alt | escape }}"
+            {% endunless %} 
+            style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); 
+            background-position: center {{ section.settings.alignment }};"
+          {% endif %}>
+        </div>
       </noscript>
     </div>
   {%- else -%}

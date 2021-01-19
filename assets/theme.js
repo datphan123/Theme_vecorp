@@ -9195,13 +9195,15 @@ theme.Quotes = (function() {
   var defaults = {
     canUseKeyboardArrows: false,
     type: 'slide',
-    slidesToShow: 2
+    slidesToShow: 4
   };
 
   function Quotes(container) {
     this.container = container;
     var sectionId = container.getAttribute('data-section-id');
     this.slider = document.getElementById('Quotes-' + sectionId);
+    console.log(this.slider)
+
 
     this.sliderActive = false;
 
@@ -9209,7 +9211,7 @@ theme.Quotes = (function() {
       canUseTouchEvents: true,
       slidesToShow: 1
     });
-
+ 
     this.desktopOptions = Object.assign({}, defaults, {
       slidesToShow: Math.min(
         defaults.slidesToShow,
@@ -9365,6 +9367,103 @@ theme.SlideshowSection.prototype = Object.assign(
     }
   }
 );
+
+theme.CSlide = (function() {
+  var config = {
+    mediaQuerySmall: 'screen and (max-width: 749px)',
+    mediaQueryMediumUp: 'screen and (min-width: 750px)',
+    slideCount: 0
+  };
+
+  var defaults = {
+    canUseKeyboardArrows: false,
+    type: 'slide',
+    slidesToShow: 3
+  };
+
+  function CSlide(container) {
+    this.container = container;
+    var sectionId = container.getAttribute('data-section-id');
+    defaults.slidesToShow = container.getAttribute('data-section-cpr');
+    this.slider = document.getElementById('CSlide-' + sectionId);
+
+    this.sliderActive = false;
+
+    this.mobileOptions = Object.assign({}, defaults, {
+      canUseTouchEvents: true,
+      slidesToShow: 1
+    });
+
+    this.desktopOptions = Object.assign({}, defaults, {
+      slidesToShow: Math.min(
+        defaults.slidesToShow,
+        this.slider.getAttribute('data-count')
+      )
+    });
+
+    this.initMobileSlider = this._initMobileSlider.bind(this);
+    this.initDesktopSlider = this._initDesktopSlider.bind(this);
+
+    this.mqlSmall = window.matchMedia(config.mediaQuerySmall);
+    this.mqlSmall.addListener(this.initMobileSlider);
+
+    this.mqlMediumUp = window.matchMedia(config.mediaQueryMediumUp);
+    this.mqlMediumUp.addListener(this.initDesktopSlider);
+
+    this.initMobileSlider();
+    this.initDesktopSlider();
+  }
+
+  CSlide.prototype = Object.assign({}, CSlide.prototype, {
+    onUnload: function() {
+      this.mqlSmall.removeListener(this.initMobileSlider);
+      this.mqlMediumUp.removeListener(this.initDesktopSlider);
+      this.slideshow.destroy();
+    },
+ 
+    // eslint-disable-next-line no-unused-vars
+    onBlockSelect: function(evt) {
+      var slide = document.querySelector(
+        '.cslide-slide--' + evt.detail.blockId
+      );
+      var slideIndex = Number(slide.getAttribute('data-slider-slide-index'));
+
+      if (this.mqlMediumUp.matches) {
+        slideIndex = Math.max(
+          0,
+          Math.min(slideIndex, this.slideshow.slides.length - 3)
+        );
+      }
+
+      this.slideshow.goToSlideByIndex(slideIndex);
+    },
+
+    _initMobileSlider: function() {
+      if (this.mqlSmall.matches) {
+        this._initSlider(this.mobileOptions);
+      }
+    },
+
+    _initDesktopSlider: function() {
+      if (this.mqlMediumUp.matches) {
+        this._initSlider(this.desktopOptions);
+      }
+    },
+
+    // eslint-disable-next-line no-unused-vars
+    _initSlider: function(args) {
+      if (this.sliderActive) {
+        this.slideshow.destroy();
+        this.sliderActive = false;
+      }
+
+      this.slideshow = new theme.Slideshow(this.container, args);
+      this.sliderActive = true;
+    }
+  });
+
+  return CSlide;
+})();
 
 window.theme = window.theme || {};
 
@@ -9577,6 +9676,8 @@ document.addEventListener('DOMContentLoaded', function() {
   sections.register('store-availability', theme.StoreAvailability);
   sections.register('video-section', theme.VideoSection);
   sections.register('quotes', theme.Quotes);
+  sections.register('custom-slide', theme.CSlide);
+
   sections.register('hero-section', theme.HeroSection);
   sections.register('product-recommendations', theme.ProductRecommendations);
   sections.register('footer-section', theme.FooterSection);
