@@ -166,7 +166,6 @@
 </head>
 
 <body class="template-{{ request.page_type | handle }}">
-
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   {%- if settings.enable_ajax -%}
@@ -174,7 +173,7 @@
   {%- endif -%}
 
   {% section 'header' %}
-  {{template}}
+
   <div class="page-container drawer-page-content" id="PageContainer">
 
     <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">

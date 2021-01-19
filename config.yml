@@ -2,3 +2,5 @@ development:
   password: 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
   theme_id: "117889335469"
   store: abcstoreshop.myshopify.com
+  ignore_file:
+  - config/setting_data.json 

@@ -1,0 +1,85 @@
+<style>
+    
+    blockquote:before, q:before {
+        position: absolute;
+        content: "“";
+        left: 25px;
+        top: 0;
+        font-size: 50px;
+        color: #999;
+    }
+    blockquote {
+        quotes: none;
+        background: #f1f1f1;
+        padding: 30px 25px 30px 60px;
+        margin-bottom: 20px;
+        position: relative;
+        font-family: serif;
+        font-style: italic;
+        display: block;
+        margin: 20px 0;
+    }
+    blockquote p{
+        text-align: start;
+    }
+    .post-content{
+        margin-top: 50px;
+    }
+    .container-content{
+        margin-bottom: 50px;
+    }
+</style>
+<div class="container container-content">
+    <div class="post-content">
+        {%- if section.settings.content1 != blank -%}
+            <p>{{section.settings.content1}}</p>
+        {%- else -%}
+            <p>Typography is the work of <strong>typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists,</strong> and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>
+        {%- endif -%}
+
+        {%- if section.settings.content2 != blank -%}
+            <blockquote>
+                <p>{{section.settings.content2}}</p>
+            </blockquote>
+        {%- else -%}
+            <blockquote>
+                <p>Sed utgio perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </blockquote>
+        {%- endif -%}
+
+        {%- if section.settings.content3 != blank -%}
+            <p>{{section.settings.content3}}</p>
+        {%- else -%}
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        {%- endif -%}
+    </div>
+
+    <div class="portfolio"></div>
+    <div class="social-share"></div>
+    <div class="blog-navigation"></div>
+    <div class="post-ralated"></div>
+</div>
+
+{% schema %}
+    {
+        "name": "text-content",
+        "class": "section-text-content",
+        "settings": [
+            {
+                "type": "text",
+                "label": "content top",
+                "id": "content1"
+            },
+            {
+                "type": "text",
+                "label": "content blockquote",
+                "id": "content2"
+            },
+            {
+                "type": "text",
+                "label": "content bottom",
+                "id": "content3"
+            }
+        ]
+    }
+{% endschema %}

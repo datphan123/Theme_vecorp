@@ -9195,7 +9195,7 @@ theme.Quotes = (function() {
   var defaults = {
     canUseKeyboardArrows: false,
     type: 'slide',
-    slidesToShow: 3
+    slidesToShow: 2
   };
 
   function Quotes(container) {
@@ -9280,6 +9280,9 @@ theme.Quotes = (function() {
 
   return Quotes;
 })();
+//
+
+
 
 theme.SlideshowSection = (function() {
   var selectors = {

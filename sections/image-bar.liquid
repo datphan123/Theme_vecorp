@@ -11,7 +11,7 @@
   {% endcase %}
 
   {% for block in section.blocks %}
-    <div class="grid__item {{ column_size }} js" {{ block.shopify_attributes }}>
+    <div class="product-card {{ column_size }} js" {{ block.shopify_attributes }}>
       {% if block.settings.link != blank %}
         <a class="image-bar__link" href="{{ block.settings.link }}">
           <div class="image-bar__item box ratio-container lazyload"
@@ -48,7 +48,7 @@
       {% endif %}
     </div>
     <noscript>
-      <div class="grid__item {{ column_size }}" {{ block.shopify_attributes }}>
+      <div class="product-card {{ column_size }}" {{ block.shopify_attributes }}>
         <div class="image-bar__item image-bar__item--{{ block.id }}" style="background-image: url({{ block.settings.image | img_url: '2048x' }});"></div>
       </div>
     </noscript>
