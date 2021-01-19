@@ -1,20 +1,4 @@
-<style>
-    .container-categories{
-      margin-top: 50px;
-    }
-    .product-card{
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-        padding: 0 0 10px 0;
-    }
-    .info-collection{
-        margin-top: 35px;
-    }
-    .title-info{
-        margin-bottom: 10px;
-    }
-</style>
+
 <div class="container container-categories">
     <div class="grid grid--no-gutters image-bar image-bar--{{ section.settings.section_height }}">
         {% case section.blocks.size %}
@@ -76,25 +60,28 @@
                 </div>
                 </noscript>
             {% endfor %}
-            <div class="product-card text-center info-collection"> 
-                <h5 class="title-info">CATEGORY:</h5>
-                <p>{{collection.title}}</p>
-            </div>
-            <div class="product-card text-center info-collection"> 
-                <h5 class="title-info">AUTHOR:</h5>
-                <p>Admin</p>
-            </div>
-            <div class="product-card text-center info-collection"> 
-                <h5 class="title-info">TAGS:</h5>
-                {% if collection.tags != blank %}
-                    {% for item in collection.all_tags %}
-                        {{item}}
-                    {% endfor %}
-                {% else %}
-                    <p>Noooooo</p>        
-                {% endif %}
-                
-            </div>
+        </div>
+        <div class="row">
+            {% if section.settings.collection != blank %}
+                <div class="col-4 text-center info-collection"> 
+                    <h5 class="title-info">CATEGORY:</h5>
+                    <p>{{collection.title}}</p>
+                </div>
+                <div class="col-4 text-center info-collection"> 
+                    <h5 class="title-info">AUTHOR:</h5>
+                    <p>Admin</p>
+                </div>
+                <div class="col-4 text-center info-collection"> 
+                    <h5 class="title-info">TAGS:</h5>
+                    {% if collection.tags != blank %}
+                        {% for item in collection.all_tags %}
+                            {{item}}
+                        {% endfor %}
+                    {% else %}
+                        <p>Noooooo</p>        
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

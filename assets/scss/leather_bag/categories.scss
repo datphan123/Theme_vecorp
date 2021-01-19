@@ -1,0 +1,24 @@
+
+.container-categories{
+    margin-top: 50px;
+    .product-card{
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        padding: 0 0 10px 0;
+        @media (max-width:576px) {
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+    .info-collection{
+        margin-top: 35px;
+        .title-info{
+            margin-bottom: 10px;
+        }
+    }
+}
+
+
+

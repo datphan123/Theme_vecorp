@@ -288,9 +288,9 @@
             {%- endif -%}
           {%- endform -%}
         </div>
-      {%- else -%}
-        <div class="grid__item small--hide {{ payment_width_class }} {% if show_payment_icons %}site-footer-item-center-vertically{% endif %}">{{ payment_icon_markup }}</div>
-      {%- endif -%}
+        {%- else -%}
+                <div class="grid__item small--hide {{ payment_width_class }} {% if show_payment_icons %}site-footer-item-center-vertically{% endif %}">{{ payment_icon_markup }}</div>
+        {%- endif -%}
 
       <div class="grid__item {% if show_selectors or show_payment_icons %}one-half{% endif %} small--one-whole site-footer-item-tall">
         {%- if social_icons -%}
@@ -300,10 +300,10 @@
               {%- assign icon_link = social | prepend: 'icon-' | downcase -%}
               {%- if settings[social_link] != blank -%}
                 <li class="social-icons__item">
-                  <a class="social-icons__link" href="{{ settings[social_link] | escape }}" aria-describedby="a11y-external-message">
-                    {%- include icon_link -%}
-                    <span class="icon__fallback-text">{{ social }}</span>
-                  </a>
+                    <a class="social-icons__link" href="{{ settings[social_link] | escape }}" aria-describedby="a11y-external-message">
+                        {%- include icon_link -%}
+                        <span class="icon__fallback-text">{{ social }}</span>
+                    </a>
                 </li>
               {%- endif -%}
             {%- endfor -%}
@@ -318,23 +318,23 @@
             {%- endif -%}
           </ul>
         {%- else -%}
-          <div class="small--hide site-footer-item-align-right {% if show_selectors or show_payment_icons %}site-footer-item-center-vertically{% endif %}">
-            <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
-            <small class="site-footer__copyright-content site-footer__copyright-content-powered-by">{{ powered_by_link }}</small>
-          </div>
+            <div class="small--hide site-footer-item-align-right {% if show_selectors or show_payment_icons %}site-footer-item-center-vertically{% endif %}">
+                <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
+                <small class="site-footer__copyright-content site-footer__copyright-content-powered-by">{{ powered_by_link }}</small>
+            </div>
         {%- endif -%}
       </div>
 
       {%- if show_selectors -%}
-        <div class="grid__item small--hide {{ payment_width_class }}">{{ payment_icon_markup }}</div>
+            <div class="grid__item small--hide {{ payment_width_class }}">{{ payment_icon_markup }}</div>
       {%- endif -%}
 
       <div class="grid__item medium-up--hide {{ payment_width_class }} small--one-whole">{{ payment_icon_markup }}</div>
 
       {%- if social_icons and show_selectors -%}
         <div class="grid__item small--hide site-footer-item-align-right {% if show_payment_icons %}one-half{% endif %}">
-          <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
-          <small class="site-footer__copyright-content site-footer__copyright-content--powered-by">{{ powered_by_link }}</small>
+            <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
+            <small class="site-footer__copyright-content site-footer__copyright-content--powered-by">{{ powered_by_link }}</small>
         </div>
       {%- endif -%}
 

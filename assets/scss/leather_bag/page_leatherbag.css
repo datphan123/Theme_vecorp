@@ -1,0 +1,15 @@
+.block-card {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 0 5px 10px 5px;
+}
+@media (max-width: 576px) {
+  .block-card {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.text-bottom {
+  margin-top: 50px;
+}

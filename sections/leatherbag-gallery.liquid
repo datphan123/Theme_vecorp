@@ -1,22 +1,9 @@
+
 <style>
-    .block-card{
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
+    .book-card{
         padding: 0 5px 10px 5px;
     }
-    .text-bottom{
-        margin-top: 50px;
-    }
-    @media (max-width:576px) {
-        .block-card{
-            -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
-    }
 </style>
-
 <div class="container container-gallery">
     <div class="grid grid--no-gutters image-bar image-bar--{{ section.settings.section_height }}">
         {% case section.blocks.size %}
@@ -31,7 +18,7 @@
         {% endcase %}
         <div class="row">
         {% for block in section.blocks %}
-            <div class="block-card {{ column_size }} js" {{ block.shopify_attributes }}>
+            <div class="col-md-4 col-sm-6 book-card {{ column_size }} js" {{ block.shopify_attributes }}>
                 {% if block.settings.link != blank %}
                     <a class="image-bar__link" href="{{ block.settings.link }}">
                         <div class="image-bar__item box ratio-container lazyload"
@@ -68,7 +55,7 @@
                 {% endif %}
             </div>
             <noscript>
-                <div class="block-card {{ column_size }}" {{ block.shopify_attributes }}>
+                <div class="col-md-4 col-sm-6 book-card {{ column_size }}" {{ block.shopify_attributes }}>
                     <div class="image-bar__item image-bar__item--{{ block.id }}" style="background-image: url({{ block.settings.image | img_url: '2048x' }});"></div>
                 </div>
             </noscript>
@@ -78,7 +65,7 @@
     {% if section.blocks.size == 0 %}
         {% include 'no-blocks' %}
     {% endif %}
-    <p class="text-bottom">Typography is the work of <strong>typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists</strong>, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>
+    <p class="mt-5">Typography is the work of <strong>typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists</strong>, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>
 </div>
 
 

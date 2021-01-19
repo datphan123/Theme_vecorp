@@ -1,0 +1,105 @@
+<style>
+    h2{
+        letter-spacing: 0px;
+    }
+</style>
+<div class="container container-ralated mt-5">
+    <div class="page-width" data-section-id="{{ section.id }}" data-section-type="quotes">
+        {% if section.settings.title != blank %}
+        <div class="section-header text-center">
+            <h2>{{ section.settings.title | escape }}</h2>
+        </div>
+        {% endif %}
+    
+        {% if section.blocks.size > 0 %}
+        <div class="quotes-wrapper" data-slider>
+            <div class="quotes-slider-wrapper" data-slider-container>
+            <div class="quotes-slider" id="Quotes-{{ section.id }}" data-count="{{ section.blocks.size }}" data-slider-track>
+                {% for block in section.blocks %}
+                <div id="slickSlide{{ block.id }}"
+                    class="quotes-slide quotes-slide--{{ block.id }}{% if section.blocks.size == 1 %} quotes-slide--single{% endif %}"
+                    aria-labelledby="slickDot{{ block.id }}"
+                    {{ block.shopify_attributes }}
+                    data-slider-slide-index="{{ forloop.index0 }}"
+                    data-slider-item>
+    
+                    <blockquote class="quotes-slider__text text-center">
+                    <span class="quote-icon">{% include 'icon-quote' %}</span>
+                    {% if block.settings.quote != blank %}
+                        <div class="rte-setting rte">{{ block.settings.quote }}</div>
+                    {% endif %}
+                    {% if block.settings.author != blank %}
+                        <cite>{{ block.settings.author | escape }}</cite>
+                    {% endif %}
+                    </blockquote>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+    
+            {% if section.blocks.size > 1 %}
+            <ul class="slick-dots{% if section.blocks.size < 4 %} slick-dots--mobile-only{% endif %}" data-slider-indicators>
+                {%- for block in section.blocks -%}
+                <li{% if forloop.first %} class="slick-active"{% endif %} data-slider-indicator>
+                    <button id="slickDot{{ block.id }}"
+                    aria-label="{{ 'sections.slideshow.load_slide' | t: slide_number: forloop.index }}"
+                    data-slide-number="{{ forloop.index0 }}"
+                    aria-controls="slickSlide{{ block.id }}"></button>
+                </li>
+                {%- endfor -%}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+    
+        {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+        {% endif %}
+    </div>
+</div>
+{% schema %}
+    {
+    "name": "related",
+    "class": "related-section",
+    "max_blocks": 9,
+    "settings": [
+        {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "related protfolio"
+        }
+    ],
+    "blocks": [
+        {
+        "type": "quote",
+        "name": "Testimonial",
+        "settings": [
+            {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+            },
+            {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Author's name"
+            }
+        ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Testimonials",
+        "category": "Text",
+        "blocks": [
+            {
+            "type": "quote"
+            }
+        ]
+        }
+    ]
+    }
+{% endschema %}

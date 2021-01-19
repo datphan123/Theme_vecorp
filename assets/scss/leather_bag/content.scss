@@ -1,0 +1,30 @@
+
+
+.blockquote-card {
+    quotes: none;
+    background: #f1f1f1;
+    padding: 30px 25px 30px 60px;
+    margin-bottom: 20px;
+    position: relative;
+    font-family: serif;
+    font-style: italic;
+    display: block;
+    margin: 20px 0;
+    &::before {
+        position: absolute;
+        content: "“";
+        left: 25px;
+        top: 0;
+        font-size: 50px;
+        color: #999;
+    }
+    p{
+        text-align: start;
+    }
+}
+.post-content{
+    margin-top: 50px;
+}
+.container-content{
+    margin-bottom: 50px;
+}

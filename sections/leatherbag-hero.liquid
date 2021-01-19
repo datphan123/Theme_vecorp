@@ -1,0 +1,32 @@
+
+<div class="page-headpage">
+    <div class="heading-bg" style="background-image: {%- if section.settings.bgheading != blank -%}
+            url('{{ section.settings.bgheading | img_url:'2048px'}}')
+        {%- else -%}
+        url('{{ 'background_hero.jpg' | asset_url }}')
+        {%- endif -%};"> 
+    </div>
+    <div class="heading-title">
+        <h1>{{section.settings.heading}}</h1>
+        <time class="f_libre">{{ "now" | date: "%b %m, %Y" }}</time>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "heading",
+        "class": "section-heading-leather",
+        "settings": [
+            {
+                "type": "text",
+                "label": "Your title",
+                "id": "heading"
+            },
+            {
+                "type": "image_picker",
+                "id": "bgheading",
+                "label": "Background heading"
+            }
+        ]
+    }
+{% endschema %}
