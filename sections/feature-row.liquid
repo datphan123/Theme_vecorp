@@ -22,12 +22,10 @@
           {{ section.settings.image | img_url: '600x600', scale: 2 | img_tag: section.settings.image.alt, 'feature-row__image' }}
         </noscript>
       {% else %}
-     
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
     </div>
   {% endcapture %}
-
   <div class="feature-row">
     {% if section.settings.layout == 'left' %}
       {{ image_layout }}
@@ -36,7 +34,7 @@
     <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
       {% if section.settings.title != blank %}
         <h2 class="h3">{{ section.settings.title | escape }}</h2>
-        <img src="{{ 'test.png' | file_url  }}" />
+        <img src="{{ 'test.png' | assets_url  }}" />
       {% endif %}
       {% if section.settings.text != blank %}
         <div class="rte rte-setting featured-row__subtext">{{ section.settings.text }}</div>
